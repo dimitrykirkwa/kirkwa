@@ -1,0 +1,110 @@
+﻿@model DEPernits.DECar
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+
+
+<h2>Details</h2>
+
+@*<dl class="dl-horizontal">
+
+        <dt>...</dt>
+
+        <dd>...</dd>
+
+    </dl>*@
+
+
+<fieldset>
+
+    <legend>DECar</legend>
+
+    @*<div class="display-label control-label col-sm-3 col-md-2">
+                @Html.DisplayNameFor(model => model.DECarsID)
+            </div>
+            <div class="display-field col-sm-9 col-md-10">
+                @Html.DisplayFor(model => model.DECarsID)
+            </div>
+
+        <div class="display-label col-md-2">
+            @Html.DisplayNameFor(model => model.DEmployee.Name)
+        </div>
+        <div class="display-field col-md-10">
+            @Html.DisplayFor(model => model.DEmployee.Name)
+        </div>*@
+
+    <dl class="dl-horizontal">
+
+        <dt class="display-label">
+            @Html.DisplayNameFor(model => model.DECarsID)
+        </dt>
+        <dd class="display-field">
+            @Html.DisplayFor(model => model.DECarsID)
+        </dd>
+
+        <dt class="display-label">
+            @Html.DisplayNameFor(model => model.DEmployee.Name)
+        </dt>
+        <dd class="display-field">
+            @Html.DisplayFor(model => model.DEmployee.Name)
+        </dd>
+
+        <dt class="display-label">
+            @Html.DisplayNameFor(model => model.Make.Make1)
+        </dt>
+        <dd class="display-field">
+            @Html.DisplayFor(model => model.Make.Make1)
+        </dd>
+
+        <dt class="display-label">
+            @Html.DisplayNameFor(model => model.Model.Model1)
+        </dt>
+        <dd class="display-field">
+            @Html.DisplayFor(model => model.Model.Model1)
+        </dd>
+
+        <dt class="display-label">
+            @Html.DisplayNameFor(model => model.CarMakeModel)
+        </dt>
+        <dd class="display-field">
+            @Html.DisplayFor(model => model.CarMakeModel)
+        </dd>
+
+        <dt class="display-label">
+            @Html.DisplayNameFor(model => model.CarYear)
+        </dt>
+        <dd class="display-field">
+            @Html.DisplayFor(model => model.CarYear)
+        </dd>
+
+        <dt class="display-label">
+            @Html.DisplayNameFor(model => model.Color1.Color1)
+        </dt>
+        <dd class="display-field">
+            @Html.DisplayFor(model => model.Color1.Color1)
+        </dd>
+
+        <dt class="display-label">
+            @Html.DisplayNameFor(model => model.Plate)
+        </dt>
+        <dd class="display-field">
+            @Html.DisplayFor(model => model.Plate)
+        </dd>
+
+        <dt class="display-label">
+            @Html.DisplayNameFor(model => model.State.Name)
+        </dt>
+        <dd class="display-field">
+            @Html.DisplayFor(model => model.State.Name)
+        </dd>
+    </dl>
+</fieldset>
+
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.DECarsID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,110 @@
+﻿@model DEPernits.DEPermits_History
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>DEPermits_History</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DEPermits_HistoryID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DEPermits_HistoryID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.EgovID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EgovID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DECar.CarMakeModel)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DECar.CarMakeModel)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Status.Status1)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Status.Status1)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DEP_APPDATE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DEP_APPDATE)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DEP_RENEWDATE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DEP_RENEWDATE)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Notes)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Notes)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Custom1)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Custom1)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Custom2)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Custom2)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Custom3)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Custom3)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Terminated)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Terminated)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TerminationDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TerminationDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Deleted)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Deleted)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

@@ -1,0 +1,1233 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DowntownEmployeeParkingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Color">
+          <Key>
+            <PropertyRef Name="Color" />
+          </Key>
+          <Property Name="Color" Type="nvarchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DECars">
+          <Key>
+            <PropertyRef Name="DECarsID" />
+          </Key>
+          <Property Name="DECarsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OwnerId" Type="int" Nullable="false" />
+          <Property Name="MakeID" Type="int" Nullable="false" />
+          <Property Name="ModelID" Type="int" Nullable="false" />
+          <Property Name="CarMakeModel" Type="nvarchar" MaxLength="80" />
+          <Property Name="CarYear" Type="int" />
+          <Property Name="Color" Type="nvarchar" MaxLength="15" />
+          <Property Name="Plate" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PlateState" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="sys_created_date" Type="date" />
+          <Property Name="sys_created_user" Type="varchar" MaxLength="50" />
+          <Property Name="Terminated" Type="bit" Nullable="false" />
+          <Property Name="TerminatedDate" Type="date" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+          <Property Name="DeletionDate" Type="date" />
+          <Property Name="BUSNUM" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="DEmployees">
+          <Key>
+            <PropertyRef Name="EmplID" />
+          </Key>
+          <Property Name="EmplID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="EmplAddress" Type="nvarchar" MaxLength="250" />
+          <Property Name="EmplState" Type="char" MaxLength="2" />
+          <Property Name="EmplCity" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmplZipCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="DEP_DL" Type="nvarchar" MaxLength="50" />
+          <Property Name="DEP_DLSTATE" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="80" />
+          <Property Name="phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="sys_created_date" Type="date" />
+          <Property Name="sys_created_user" Type="varchar" MaxLength="50" />
+          <Property Name="BUSNum" Type="varchar" MaxLength="50" />
+          <Property Name="deleted" Type="bit" />
+          <Property Name="DeletedDate" Type="date" />
+        </EntityType>
+        <EntityType Name="DEPermits_History">
+          <Key>
+            <PropertyRef Name="DEPermits_HistoryID" />
+          </Key>
+          <Property Name="DEPermits_HistoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DEPermitNumberV" Type="varchar" MaxLength="80" />
+          <Property Name="DEPermitNumberI" Type="int" />
+          <Property Name="EgovID" Type="uniqueidentifier" />
+          <Property Name="BUSNum" Type="varchar" MaxLength="80" />
+          <Property Name="EmployersContactsID" Type="int" />
+          <Property Name="DECarID" Type="int" Nullable="false" />
+          <Property Name="StatusID" Type="int" Nullable="false" />
+          <Property Name="DEP_APPDATE" Type="date" Nullable="false" />
+          <Property Name="DEP_RENEWDATE" Type="date" />
+          <Property Name="Notes" Type="nvarchar(max)" />
+          <Property Name="Custom1" Type="nvarchar" MaxLength="250" />
+          <Property Name="Custom2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Custom3" Type="int" />
+          <Property Name="Terminated" Type="bit" Nullable="false" />
+          <Property Name="TerminationDate" Type="date" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+          <Property Name="DeletionDate" Type="date" />
+          <Property Name="sys_created_date" Type="date" Nullable="false" />
+          <Property Name="sys_created_user" Type="varchar" MaxLength="50" />
+          <Property Name="EmployerName" Type="nvarchar" MaxLength="100" />
+          <Property Name="EmployerAddress" Type="nvarchar" MaxLength="250" />
+          <Property Name="EmployerEmail" Type="nvarchar" MaxLength="100" />
+          <Property Name="EmployerPhone" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Make">
+          <Key>
+            <PropertyRef Name="MakeID" />
+          </Key>
+          <Property Name="MakeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Make" Type="nvarchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Model">
+          <Key>
+            <PropertyRef Name="ModelID" />
+          </Key>
+          <Property Name="ModelID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MakeID" Type="int" />
+          <Property Name="Model" Type="varchar" MaxLength="50" />
+          <Property Name="CarName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="States">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DowntownEmployeeParking.dbo.vw_DECarsOwnersInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_DECarsOwnersInfo">
+          <Key>
+            <PropertyRef Name="DECarsID" />
+            <PropertyRef Name="EmplID" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="DEP_DLSTATE" />
+            <PropertyRef Name="MakeID" />
+            <PropertyRef Name="ModelID" />
+            <PropertyRef Name="Plate" />
+            <PropertyRef Name="PlateState" />
+          </Key>
+          <Property Name="DECarsID" Type="int" Nullable="false" />
+          <Property Name="EmplID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="email" Type="nvarchar" MaxLength="80" />
+          <Property Name="DEP_DL" Type="nvarchar" MaxLength="50" />
+          <Property Name="DEP_DLSTATE" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="CarName" Type="varchar" MaxLength="50" />
+          <Property Name="MakeID" Type="int" Nullable="false" />
+          <Property Name="ModelID" Type="int" Nullable="false" />
+          <Property Name="Plate" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PlateState" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="Color" Type="nvarchar" MaxLength="15" />
+          <Property Name="CarYear" Type="int" />
+          <Property Name="ToDisplay" Type="varchar" MaxLength="326" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DowntownEmployeeParking.dbo.vw_DEPermitsDenormalized' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_DEPermitsDenormalized">
+          <Key>
+            <PropertyRef Name="DEPermits_HistoryID" />
+            <PropertyRef Name="EmplID" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="DEP_DLSTATE" />
+            <PropertyRef Name="Plate" />
+            <PropertyRef Name="PlateState" />
+            <PropertyRef Name="DEP_APPDATE" />
+            <PropertyRef Name="StatusID" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="Deleted" />
+            <PropertyRef Name="Terminated" />
+          </Key>
+          <Property Name="DEPermits_HistoryID" Type="int" Nullable="false" />
+          <Property Name="BUSNum" Type="varchar" MaxLength="80" />
+          <Property Name="DEPermitNumberV" Type="varchar" MaxLength="80" />
+          <Property Name="EmplID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="email" Type="nvarchar" MaxLength="80" />
+          <Property Name="DEP_DL" Type="nvarchar" MaxLength="50" />
+          <Property Name="DEP_DLSTATE" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="CarName" Type="varchar" MaxLength="50" />
+          <Property Name="Plate" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PlateState" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="Color" Type="nvarchar" MaxLength="15" />
+          <Property Name="CarYear" Type="int" />
+          <Property Name="Notes" Type="nvarchar(max)" />
+          <Property Name="DEP_APPDATE" Type="date" Nullable="false" />
+          <Property Name="DEP_RENEWDATE" Type="date" />
+          <Property Name="StatusID" Type="int" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+          <Property Name="DeletionDate" Type="date" />
+          <Property Name="Terminated" Type="bit" Nullable="false" />
+          <Property Name="TerminationDate" Type="date" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DowntownEmployeeParking.dbo.vw_DowntownActiveBusinessLicenses' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_DowntownActiveBusinessLicenses">
+          <Key>
+            <PropertyRef Name="BLgeeID" />
+            <PropertyRef Name="License_Number" />
+          </Key>
+          <Property Name="BLgeeID" Type="char" MaxLength="36" Nullable="false" />
+          <Property Name="License_Number" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="License_Year" Type="int" />
+          <Property Name="Classification" Type="nvarchar" MaxLength="50" />
+          <Property Name="License_Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="DBA" Type="nvarchar" MaxLength="100" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Employees" Type="float" />
+          <Property Name="DBA_Address_Line1" Type="nvarchar" MaxLength="250" />
+          <Property Name="DBA_CityStateZip" Type="nvarchar" MaxLength="154" />
+          <Property Name="DBATelePhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="DBAEmail" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DowntownEmployeeParking.dbo.vw_TotalCarPerBus' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_TotalCarPerBus">
+          <Key>
+            <PropertyRef Name="EmplID" />
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="BUSNum" Type="varchar" MaxLength="80" />
+          <Property Name="TotalCarsPerBus" Type="int" />
+          <Property Name="TotalEmplPerBus" Type="int" />
+          <Property Name="EmplID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="TotalCarsPerEmpl" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'DowntownEmployeeParking.dbo.vw_ui_BusinesStats' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="vw_ui_BusinesStats">
+          <Property Name="BUSNum" Type="varchar" MaxLength="80" />
+          <Property Name="TotalCarsPerBus" Type="int" />
+          <Property Name="TotalEmplPerBus" Type="int" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DowntownEmployeeParking.dbo.vw_ui_dashboard1' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_ui_dashboard1">
+          <Key>
+            <PropertyRef Name="Sorting" />
+            <PropertyRef Name="Permits Status" />
+          </Key>
+          <Property Name="Sorting" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="Permits Status" Type="nvarchar" MaxLength="29" Nullable="false" />
+          <Property Name="Totals" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DowntownEmployeeParking.dbo.vw_ui_dashboard2' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_ui_dashboard2">
+          <Key>
+            <PropertyRef Name="Sorting" />
+            <PropertyRef Name="Errors" />
+          </Key>
+          <Property Name="Sorting" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="Errors" Type="varchar" MaxLength="27" Nullable="false" />
+          <Property Name="Value" Type="int" />
+        </EntityType>
+        <Association Name="fk_Color">
+          <End Role="Color" Type="Self.Color" Multiplicity="0..1" />
+          <End Role="DECars" Type="Self.DECars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Color">
+              <PropertyRef Name="Color" />
+            </Principal>
+            <Dependent Role="DECars">
+              <PropertyRef Name="Color" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_DECars_MakeID">
+          <End Role="Make" Type="Self.Make" Multiplicity="1" />
+          <End Role="DECars" Type="Self.DECars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Make">
+              <PropertyRef Name="MakeID" />
+            </Principal>
+            <Dependent Role="DECars">
+              <PropertyRef Name="MakeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_DECars_ModelID">
+          <End Role="Model" Type="Self.Model" Multiplicity="1" />
+          <End Role="DECars" Type="Self.DECars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Model">
+              <PropertyRef Name="ModelID" />
+            </Principal>
+            <Dependent Role="DECars">
+              <PropertyRef Name="ModelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_DEmployees_EmplState">
+          <End Role="States" Type="Self.States" Multiplicity="0..1" />
+          <End Role="DEmployees" Type="Self.DEmployees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="States">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="DEmployees">
+              <PropertyRef Name="EmplState" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_DEmployees_PlateState">
+          <End Role="States" Type="Self.States" Multiplicity="1" />
+          <End Role="DEmployees" Type="Self.DEmployees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="States">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="DEmployees">
+              <PropertyRef Name="DEP_DLSTATE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_DEPermits_History_DECarID">
+          <End Role="DECars" Type="Self.DECars" Multiplicity="1" />
+          <End Role="DEPermits_History" Type="Self.DEPermits_History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DECars">
+              <PropertyRef Name="DECarsID" />
+            </Principal>
+            <Dependent Role="DEPermits_History">
+              <PropertyRef Name="DECarID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_DEPermits_History_StatusID">
+          <End Role="Status" Type="Self.Status" Multiplicity="1" />
+          <End Role="DEPermits_History" Type="Self.DEPermits_History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DEPermits_History">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Model_MakeID">
+          <End Role="Make" Type="Self.Make" Multiplicity="0..1" />
+          <End Role="Model" Type="Self.Model" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Make">
+              <PropertyRef Name="MakeID" />
+            </Principal>
+            <Dependent Role="Model">
+              <PropertyRef Name="MakeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_OwnerId_DEmployees_EmplID">
+          <End Role="DEmployees" Type="Self.DEmployees" Multiplicity="1" />
+          <End Role="DECars" Type="Self.DECars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DEmployees">
+              <PropertyRef Name="EmplID" />
+            </Principal>
+            <Dependent Role="DECars">
+              <PropertyRef Name="OwnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_states_PlateState">
+          <End Role="States" Type="Self.States" Multiplicity="1" />
+          <End Role="DECars" Type="Self.DECars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="States">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="DECars">
+              <PropertyRef Name="PlateState" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="usp_DECars_inserting" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="OwnerId" Type="varchar" Mode="In" />
+          <Parameter Name="MakeID" Type="varchar" Mode="In" />
+          <Parameter Name="ModelID" Type="varchar" Mode="In" />
+          <Parameter Name="CarYear" Type="varchar" Mode="In" />
+          <Parameter Name="Color" Type="varchar" Mode="In" />
+          <Parameter Name="Plate" Type="varchar" Mode="In" />
+          <Parameter Name="PlateState" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_DEPermits_History_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DEPermitNumberV" Type="varchar" Mode="In" />
+          <Parameter Name="DEPermitNumberI" Type="varchar" Mode="In" />
+          <Parameter Name="EgovID" Type="varchar" Mode="In" />
+          <Parameter Name="BUSNum" Type="varchar" Mode="In" />
+          <Parameter Name="EmployersContactsID" Type="int" Mode="In" />
+          <Parameter Name="DECarID" Type="int" Mode="In" />
+          <Parameter Name="StatusID" Type="int" Mode="In" />
+          <Parameter Name="DEP_APPDATE" Type="date" Mode="In" />
+          <Parameter Name="DEP_RENEWDATE" Type="date" Mode="In" />
+          <Parameter Name="Notes" Type="varchar" Mode="In" />
+          <Parameter Name="Custom1" Type="nvarchar" Mode="In" />
+          <Parameter Name="Custom2" Type="nvarchar" Mode="In" />
+          <Parameter Name="Custom3" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_Employee_inserting" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Name" Type="varchar" Mode="In" />
+          <Parameter Name="EmplAddress" Type="varchar" Mode="In" />
+          <Parameter Name="EmplState" Type="char" Mode="In" />
+          <Parameter Name="EmplZipCode" Type="varchar" Mode="In" />
+          <Parameter Name="DEP_DL" Type="varchar" Mode="In" />
+          <Parameter Name="DEP_DLSTATE" Type="char" Mode="In" />
+          <Parameter Name="email" Type="varchar" Mode="In" />
+          <Parameter Name="phone" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="DowntownEmployeeParkingModelStoreContainer">
+          <EntitySet Name="Color" EntityType="Self.Color" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DECars" EntityType="Self.DECars" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DEmployees" EntityType="Self.DEmployees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DEPermits_History" EntityType="Self.DEPermits_History" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Make" EntityType="Self.Make" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Model" EntityType="Self.Model" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="States" EntityType="Self.States" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vw_DECarsOwnersInfo" EntityType="Self.vw_DECarsOwnersInfo" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[vw_DECarsOwnersInfo].[DECarsID] AS [DECarsID], 
+[vw_DECarsOwnersInfo].[EmplID] AS [EmplID], 
+[vw_DECarsOwnersInfo].[Name] AS [Name], 
+[vw_DECarsOwnersInfo].[phone] AS [phone], 
+[vw_DECarsOwnersInfo].[email] AS [email], 
+[vw_DECarsOwnersInfo].[DEP_DL] AS [DEP_DL], 
+[vw_DECarsOwnersInfo].[DEP_DLSTATE] AS [DEP_DLSTATE], 
+[vw_DECarsOwnersInfo].[CarName] AS [CarName], 
+[vw_DECarsOwnersInfo].[MakeID] AS [MakeID], 
+[vw_DECarsOwnersInfo].[ModelID] AS [ModelID], 
+[vw_DECarsOwnersInfo].[Plate] AS [Plate], 
+[vw_DECarsOwnersInfo].[PlateState] AS [PlateState], 
+[vw_DECarsOwnersInfo].[Color] AS [Color], 
+[vw_DECarsOwnersInfo].[CarYear] AS [CarYear], 
+[vw_DECarsOwnersInfo].[ToDisplay] AS [ToDisplay]
+FROM [dbo].[vw_DECarsOwnersInfo] AS [vw_DECarsOwnersInfo]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_DEPermitsDenormalized" EntityType="Self.vw_DEPermitsDenormalized" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[vw_DEPermitsDenormalized].[DEPermits_HistoryID] AS [DEPermits_HistoryID], 
+[vw_DEPermitsDenormalized].[BUSNum] AS [BUSNum], 
+[vw_DEPermitsDenormalized].[DEPermitNumberV] AS [DEPermitNumberV], 
+[vw_DEPermitsDenormalized].[EmplID] AS [EmplID], 
+[vw_DEPermitsDenormalized].[Name] AS [Name], 
+[vw_DEPermitsDenormalized].[phone] AS [phone], 
+[vw_DEPermitsDenormalized].[email] AS [email], 
+[vw_DEPermitsDenormalized].[DEP_DL] AS [DEP_DL], 
+[vw_DEPermitsDenormalized].[DEP_DLSTATE] AS [DEP_DLSTATE], 
+[vw_DEPermitsDenormalized].[CarName] AS [CarName], 
+[vw_DEPermitsDenormalized].[Plate] AS [Plate], 
+[vw_DEPermitsDenormalized].[PlateState] AS [PlateState], 
+[vw_DEPermitsDenormalized].[Color] AS [Color], 
+[vw_DEPermitsDenormalized].[CarYear] AS [CarYear], 
+[vw_DEPermitsDenormalized].[Notes] AS [Notes], 
+[vw_DEPermitsDenormalized].[DEP_APPDATE] AS [DEP_APPDATE], 
+[vw_DEPermitsDenormalized].[DEP_RENEWDATE] AS [DEP_RENEWDATE], 
+[vw_DEPermitsDenormalized].[StatusID] AS [StatusID], 
+[vw_DEPermitsDenormalized].[Status] AS [Status], 
+[vw_DEPermitsDenormalized].[Deleted] AS [Deleted], 
+[vw_DEPermitsDenormalized].[DeletionDate] AS [DeletionDate], 
+[vw_DEPermitsDenormalized].[Terminated] AS [Terminated], 
+[vw_DEPermitsDenormalized].[TerminationDate] AS [TerminationDate]
+FROM [dbo].[vw_DEPermitsDenormalized] AS [vw_DEPermitsDenormalized]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_DowntownActiveBusinessLicenses" EntityType="Self.vw_DowntownActiveBusinessLicenses" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[vw_DowntownActiveBusinessLicenses].[BLgeeID] AS [BLgeeID], 
+[vw_DowntownActiveBusinessLicenses].[License_Number] AS [License_Number], 
+[vw_DowntownActiveBusinessLicenses].[License_Year] AS [License_Year], 
+[vw_DowntownActiveBusinessLicenses].[Classification] AS [Classification], 
+[vw_DowntownActiveBusinessLicenses].[License_Status] AS [License_Status], 
+[vw_DowntownActiveBusinessLicenses].[DBA] AS [DBA], 
+[vw_DowntownActiveBusinessLicenses].[Description] AS [Description], 
+[vw_DowntownActiveBusinessLicenses].[Employees] AS [Employees], 
+[vw_DowntownActiveBusinessLicenses].[DBA_Address_Line1] AS [DBA_Address_Line1], 
+[vw_DowntownActiveBusinessLicenses].[DBA_CityStateZip] AS [DBA_CityStateZip], 
+[vw_DowntownActiveBusinessLicenses].[DBATelePhone] AS [DBATelePhone], 
+[vw_DowntownActiveBusinessLicenses].[DBAEmail] AS [DBAEmail]
+FROM [dbo].[vw_DowntownActiveBusinessLicenses] AS [vw_DowntownActiveBusinessLicenses]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_TotalCarPerBus" EntityType="Self.vw_TotalCarPerBus" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[vw_TotalCarPerBus].[BUSNum] AS [BUSNum], 
+[vw_TotalCarPerBus].[TotalCarsPerBus] AS [TotalCarsPerBus], 
+[vw_TotalCarPerBus].[TotalEmplPerBus] AS [TotalEmplPerBus], 
+[vw_TotalCarPerBus].[EmplID] AS [EmplID], 
+[vw_TotalCarPerBus].[Name] AS [Name], 
+[vw_TotalCarPerBus].[TotalCarsPerEmpl] AS [TotalCarsPerEmpl]
+FROM [dbo].[vw_TotalCarPerBus] AS [vw_TotalCarPerBus]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_ui_dashboard1" EntityType="Self.vw_ui_dashboard1" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[vw_ui_dashboard1].[Sorting] AS [Sorting], 
+[vw_ui_dashboard1].[Permits Status] AS [Permits Status], 
+[vw_ui_dashboard1].[Totals] AS [Totals]
+FROM [dbo].[vw_ui_dashboard1] AS [vw_ui_dashboard1]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_ui_dashboard2" EntityType="Self.vw_ui_dashboard2" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[vw_ui_dashboard2].[Sorting] AS [Sorting], 
+[vw_ui_dashboard2].[Errors] AS [Errors], 
+[vw_ui_dashboard2].[Value] AS [Value]
+FROM [dbo].[vw_ui_dashboard2] AS [vw_ui_dashboard2]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="fk_Color" Association="Self.fk_Color">
+            <End Role="Color" EntitySet="Color" />
+            <End Role="DECars" EntitySet="DECars" />
+          </AssociationSet>
+          <AssociationSet Name="fk_DECars_MakeID" Association="Self.fk_DECars_MakeID">
+            <End Role="Make" EntitySet="Make" />
+            <End Role="DECars" EntitySet="DECars" />
+          </AssociationSet>
+          <AssociationSet Name="fk_DECars_ModelID" Association="Self.fk_DECars_ModelID">
+            <End Role="Model" EntitySet="Model" />
+            <End Role="DECars" EntitySet="DECars" />
+          </AssociationSet>
+          <AssociationSet Name="fk_DEmployees_EmplState" Association="Self.fk_DEmployees_EmplState">
+            <End Role="States" EntitySet="States" />
+            <End Role="DEmployees" EntitySet="DEmployees" />
+          </AssociationSet>
+          <AssociationSet Name="fk_DEmployees_PlateState" Association="Self.fk_DEmployees_PlateState">
+            <End Role="States" EntitySet="States" />
+            <End Role="DEmployees" EntitySet="DEmployees" />
+          </AssociationSet>
+          <AssociationSet Name="fk_DEPermits_History_DECarID" Association="Self.fk_DEPermits_History_DECarID">
+            <End Role="DECars" EntitySet="DECars" />
+            <End Role="DEPermits_History" EntitySet="DEPermits_History" />
+          </AssociationSet>
+          <AssociationSet Name="fk_DEPermits_History_StatusID" Association="Self.fk_DEPermits_History_StatusID">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="DEPermits_History" EntitySet="DEPermits_History" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Model_MakeID" Association="Self.fk_Model_MakeID">
+            <End Role="Make" EntitySet="Make" />
+            <End Role="Model" EntitySet="Model" />
+          </AssociationSet>
+          <AssociationSet Name="fk_OwnerId_DEmployees_EmplID" Association="Self.fk_OwnerId_DEmployees_EmplID">
+            <End Role="DEmployees" EntitySet="DEmployees" />
+            <End Role="DECars" EntitySet="DECars" />
+          </AssociationSet>
+          <AssociationSet Name="fk_states_PlateState" Association="Self.fk_states_PlateState">
+            <End Role="States" EntitySet="States" />
+            <End Role="DECars" EntitySet="DECars" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DowntownEmployeeParkingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Color">
+          <Key>
+            <PropertyRef Name="Color1" />
+          </Key>
+          <Property Name="Color1" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="DECars" Relationship="DowntownEmployeeParkingModel.fk_Color" FromRole="Color" ToRole="DECar" />
+        </EntityType>
+        <EntityType Name="Make">
+          <Key>
+            <PropertyRef Name="MakeID" />
+          </Key>
+          <Property Name="MakeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Make1" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Models" Relationship="Self.fk_Model_MakeID" FromRole="Make" ToRole="Model" />
+          <NavigationProperty Name="DECars" Relationship="DowntownEmployeeParkingModel.fk_DECars_MakeID" FromRole="Make" ToRole="DECar" />
+        </EntityType>
+        <EntityType Name="Model">
+          <Key>
+            <PropertyRef Name="ModelID" />
+          </Key>
+          <Property Name="ModelID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MakeID" Type="Int32" />
+          <Property Name="Model1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CarName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Make" Relationship="Self.fk_Model_MakeID" FromRole="Model" ToRole="Make" />
+          <NavigationProperty Name="DECars" Relationship="DowntownEmployeeParkingModel.fk_DECars_ModelID" FromRole="Model" ToRole="DECar" />
+        </EntityType>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DECars" Relationship="DowntownEmployeeParkingModel.fk_states_PlateState" FromRole="State" ToRole="DECar" />
+          <NavigationProperty Name="DEmployees" Relationship="DowntownEmployeeParkingModel.fk_DEmployees_EmplState" FromRole="State" ToRole="DEmployee" />
+          <NavigationProperty Name="DEmployees1" Relationship="DowntownEmployeeParkingModel.fk_DEmployees_PlateState" FromRole="State" ToRole="DEmployee" />
+          </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Status1" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="DEPermits_History" Relationship="DowntownEmployeeParkingModel.fk_DEPermits_History_StatusID" FromRole="Status" ToRole="DEPermits_History" />
+        </EntityType>
+        <Association Name="fk_Model_MakeID">
+          <End Role="Make" Type="Self.Make" Multiplicity="0..1" />
+          <End Role="Model" Type="Self.Model" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Make">
+              <PropertyRef Name="MakeID" />
+            </Principal>
+            <Dependent Role="Model">
+              <PropertyRef Name="MakeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DowntownEmployeeParkingEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Colors" EntityType="Self.Color" />
+          <EntitySet Name="Makes" EntityType="Self.Make" />
+          <EntitySet Name="Models" EntityType="Self.Model" />
+          <EntitySet Name="States" EntityType="Self.State" />
+          <EntitySet Name="Status" EntityType="Self.Status" />
+          <AssociationSet Name="fk_Model_MakeID" Association="Self.fk_Model_MakeID">
+            <End Role="Make" EntitySet="Makes" />
+            <End Role="Model" EntitySet="Models" />
+          </AssociationSet>
+          <FunctionImport Name="usp_DECars_inserting">
+            <Parameter Name="OwnerId" Mode="In" Type="String" />
+            <Parameter Name="MakeID" Mode="In" Type="String" />
+            <Parameter Name="ModelID" Mode="In" Type="String" />
+            <Parameter Name="CarYear" Mode="In" Type="String" />
+            <Parameter Name="Color" Mode="In" Type="String" />
+            <Parameter Name="Plate" Mode="In" Type="String" />
+            <Parameter Name="PlateState" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_DEPermits_History_insert">
+            <Parameter Name="DEPermitNumberV" Mode="In" Type="String" />
+            <Parameter Name="DEPermitNumberI" Mode="In" Type="String" />
+            <Parameter Name="EgovID" Mode="In" Type="String" />
+            <Parameter Name="BUSNum" Mode="In" Type="String" />
+            <Parameter Name="EmployersContactsID" Mode="In" Type="Int32" />
+            <Parameter Name="DECarID" Mode="In" Type="Int32" />
+            <Parameter Name="StatusID" Mode="In" Type="Int32" />
+            <Parameter Name="DEP_APPDATE" Mode="In" Type="DateTime" />
+            <Parameter Name="DEP_RENEWDATE" Mode="In" Type="DateTime" />
+            <Parameter Name="Notes" Mode="In" Type="String" />
+            <Parameter Name="Custom1" Mode="In" Type="String" />
+            <Parameter Name="Custom2" Mode="In" Type="String" />
+            <Parameter Name="Custom3" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_Employee_inserting">
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="EmplAddress" Mode="In" Type="String" />
+            <Parameter Name="EmplState" Mode="In" Type="String" />
+            <Parameter Name="EmplZipCode" Mode="In" Type="String" />
+            <Parameter Name="DEP_DL" Mode="In" Type="String" />
+            <Parameter Name="DEP_DLSTATE" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="phone" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="DECars" EntityType="DowntownEmployeeParkingModel.DECar" />
+          <AssociationSet Name="fk_Color" Association="DowntownEmployeeParkingModel.fk_Color">
+            <End Role="Color" EntitySet="Colors" />
+            <End Role="DECar" EntitySet="DECars" />
+          </AssociationSet>
+          <AssociationSet Name="fk_DECars_MakeID" Association="DowntownEmployeeParkingModel.fk_DECars_MakeID">
+            <End Role="Make" EntitySet="Makes" />
+            <End Role="DECar" EntitySet="DECars" />
+          </AssociationSet>
+          <AssociationSet Name="fk_DECars_ModelID" Association="DowntownEmployeeParkingModel.fk_DECars_ModelID">
+            <End Role="Model" EntitySet="Models" />
+            <End Role="DECar" EntitySet="DECars" />
+          </AssociationSet>
+          <AssociationSet Name="fk_states_PlateState" Association="DowntownEmployeeParkingModel.fk_states_PlateState">
+            <End Role="State" EntitySet="States" />
+            <End Role="DECar" EntitySet="DECars" />
+          </AssociationSet>
+          <EntitySet Name="DEPermits_History" EntityType="DowntownEmployeeParkingModel.DEPermits_History" />
+          <AssociationSet Name="fk_DEPermits_History_DECarID" Association="DowntownEmployeeParkingModel.fk_DEPermits_History_DECarID">
+            <End Role="DECar" EntitySet="DECars" />
+            <End Role="DEPermits_History" EntitySet="DEPermits_History" />
+          </AssociationSet>
+          <AssociationSet Name="fk_DEPermits_History_StatusID" Association="DowntownEmployeeParkingModel.fk_DEPermits_History_StatusID">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="DEPermits_History" EntitySet="DEPermits_History" />
+          </AssociationSet>
+          <EntitySet Name="DEmployees" EntityType="DowntownEmployeeParkingModel.DEmployee" />
+          <AssociationSet Name="fk_OwnerId_DEmployees_EmplID" Association="DowntownEmployeeParkingModel.fk_OwnerId_DEmployees_EmplID">
+            <End Role="DEmployee" EntitySet="DEmployees" />
+            <End Role="DECar" EntitySet="DECars" />
+          </AssociationSet>
+          <AssociationSet Name="fk_DEmployees_EmplState" Association="DowntownEmployeeParkingModel.fk_DEmployees_EmplState">
+            <End Role="State" EntitySet="States" />
+            <End Role="DEmployee" EntitySet="DEmployees" />
+          </AssociationSet>
+          <AssociationSet Name="fk_DEmployees_PlateState" Association="DowntownEmployeeParkingModel.fk_DEmployees_PlateState">
+            <End Role="State" EntitySet="States" />
+            <End Role="DEmployee" EntitySet="DEmployees" />
+          </AssociationSet>
+          <EntitySet Name="vw_DECarsOwnersInfo" EntityType="DowntownEmployeeParkingModel.vw_DECarsOwnersInfo" />
+          <EntitySet Name="vw_DEPermitsDenormalized" EntityType="DowntownEmployeeParkingModel.vw_DEPermitsDenormalized" />
+          <EntitySet Name="vw_DowntownActiveBusinessLicenses" EntityType="DowntownEmployeeParkingModel.vw_DowntownActiveBusinessLicenses" />
+          <EntitySet Name="vw_TotalCarPerBus" EntityType="DowntownEmployeeParkingModel.vw_TotalCarPerBus" />
+          <EntitySet Name="vw_ui_dashboard1" EntityType="DowntownEmployeeParkingModel.vw_ui_dashboard1" />
+          <EntitySet Name="vw_ui_dashboard2" EntityType="DowntownEmployeeParkingModel.vw_ui_dashboard2" />
+        </EntityContainer>
+        <EntityType Name="DECar">
+          <Key>
+            <PropertyRef Name="DECarsID" />
+          </Key>
+          <Property Name="DECarsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OwnerId" Type="Int32" Nullable="false" />
+          <Property Name="MakeID" Type="Int32" Nullable="false" />
+          <Property Name="ModelID" Type="Int32" Nullable="false" />
+          <Property Name="CarMakeModel" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="CarYear" Type="Int32" />
+          <Property Name="Color" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Plate" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PlateState" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="sys_created_date" Type="DateTime" Precision="0" />
+          <Property Name="sys_created_user" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Terminated" Type="Boolean" Nullable="false" />
+          <Property Name="TerminatedDate" Type="DateTime" Precision="0" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+          <Property Name="DeletionDate" Type="DateTime" Precision="0" />
+          <Property Name="BUSNUM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Color1" Relationship="DowntownEmployeeParkingModel.fk_Color" FromRole="DECar" ToRole="Color" />
+          <NavigationProperty Name="Make" Relationship="DowntownEmployeeParkingModel.fk_DECars_MakeID" FromRole="DECar" ToRole="Make" />
+          <NavigationProperty Name="Model" Relationship="DowntownEmployeeParkingModel.fk_DECars_ModelID" FromRole="DECar" ToRole="Model" />
+          <NavigationProperty Name="State" Relationship="DowntownEmployeeParkingModel.fk_states_PlateState" FromRole="DECar" ToRole="State" />
+          <NavigationProperty Name="DEPermits_History" Relationship="DowntownEmployeeParkingModel.fk_DEPermits_History_DECarID" FromRole="DECar" ToRole="DEPermits_History" />
+          <NavigationProperty Name="DEmployee" Relationship="DowntownEmployeeParkingModel.fk_OwnerId_DEmployees_EmplID" FromRole="DECar" ToRole="DEmployee" />
+        </EntityType>
+        <Association Name="fk_Color">
+          <End Type="DowntownEmployeeParkingModel.Color" Role="Color" Multiplicity="0..1" />
+          <End Type="DowntownEmployeeParkingModel.DECar" Role="DECar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Color">
+              <PropertyRef Name="Color1" />
+            </Principal>
+            <Dependent Role="DECar">
+              <PropertyRef Name="Color" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_DECars_MakeID">
+          <End Type="DowntownEmployeeParkingModel.Make" Role="Make" Multiplicity="1" />
+          <End Type="DowntownEmployeeParkingModel.DECar" Role="DECar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Make">
+              <PropertyRef Name="MakeID" />
+            </Principal>
+            <Dependent Role="DECar">
+              <PropertyRef Name="MakeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_DECars_ModelID">
+          <End Type="DowntownEmployeeParkingModel.Model" Role="Model" Multiplicity="1" />
+          <End Type="DowntownEmployeeParkingModel.DECar" Role="DECar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Model">
+              <PropertyRef Name="ModelID" />
+            </Principal>
+            <Dependent Role="DECar">
+              <PropertyRef Name="ModelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_states_PlateState">
+          <End Type="DowntownEmployeeParkingModel.State" Role="State" Multiplicity="1" />
+          <End Type="DowntownEmployeeParkingModel.DECar" Role="DECar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="DECar">
+              <PropertyRef Name="PlateState" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="DEPermits_History">
+          <Key>
+            <PropertyRef Name="DEPermits_HistoryID" />
+          </Key>
+          <Property Name="DEPermits_HistoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DEPermitNumberV" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="DEPermitNumberI" Type="Int32" />
+          <Property Name="EgovID" Type="Guid" />
+          <Property Name="BUSNum" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="EmployersContactsID" Type="Int32" />
+          <Property Name="DECarID" Type="Int32" Nullable="false" />
+          <Property Name="StatusID" Type="Int32" Nullable="false" />
+          <Property Name="DEP_APPDATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DEP_RENEWDATE" Type="DateTime" Precision="0" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Custom1" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Custom2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Custom3" Type="Int32" />
+          <Property Name="Terminated" Type="Boolean" Nullable="false" />
+          <Property Name="TerminationDate" Type="DateTime" Precision="0" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+          <Property Name="DeletionDate" Type="DateTime" Precision="0" />
+          <Property Name="sys_created_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="sys_created_user" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmployerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EmployerAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="EmployerEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EmployerPhone" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DECar" Relationship="DowntownEmployeeParkingModel.fk_DEPermits_History_DECarID" FromRole="DEPermits_History" ToRole="DECar" />
+          <NavigationProperty Name="Status" Relationship="DowntownEmployeeParkingModel.fk_DEPermits_History_StatusID" FromRole="DEPermits_History" ToRole="Status" />
+        </EntityType>
+        <Association Name="fk_DEPermits_History_DECarID">
+          <End Type="DowntownEmployeeParkingModel.DECar" Role="DECar" Multiplicity="1" />
+          <End Type="DowntownEmployeeParkingModel.DEPermits_History" Role="DEPermits_History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DECar">
+              <PropertyRef Name="DECarsID" />
+            </Principal>
+            <Dependent Role="DEPermits_History">
+              <PropertyRef Name="DECarID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_DEPermits_History_StatusID">
+          <End Type="DowntownEmployeeParkingModel.Status" Role="Status" Multiplicity="1" />
+          <End Type="DowntownEmployeeParkingModel.DEPermits_History" Role="DEPermits_History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DEPermits_History">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="DEmployee">
+          <Key>
+            <PropertyRef Name="EmplID" />
+          </Key>
+          <Property Name="EmplID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="EmplAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="EmplState" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="EmplCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmplZipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DEP_DL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DEP_DLSTATE" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sys_created_date" Type="DateTime" Precision="0" />
+          <Property Name="sys_created_user" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BUSNum" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DECars" Relationship="DowntownEmployeeParkingModel.fk_OwnerId_DEmployees_EmplID" FromRole="DEmployee" ToRole="DECar" />
+          <NavigationProperty Name="State" Relationship="DowntownEmployeeParkingModel.fk_DEmployees_EmplState" FromRole="DEmployee" ToRole="State" />
+          <NavigationProperty Name="State1" Relationship="DowntownEmployeeParkingModel.fk_DEmployees_PlateState" FromRole="DEmployee" ToRole="State" />
+          <Property Name="deleted" Type="Boolean" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <Association Name="fk_OwnerId_DEmployees_EmplID">
+          <End Type="DowntownEmployeeParkingModel.DEmployee" Role="DEmployee" Multiplicity="1" />
+          <End Type="DowntownEmployeeParkingModel.DECar" Role="DECar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DEmployee">
+              <PropertyRef Name="EmplID" />
+            </Principal>
+            <Dependent Role="DECar">
+              <PropertyRef Name="OwnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_DEmployees_EmplState">
+          <End Type="DowntownEmployeeParkingModel.State" Role="State" Multiplicity="0..1" />
+          <End Type="DowntownEmployeeParkingModel.DEmployee" Role="DEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="DEmployee">
+              <PropertyRef Name="EmplState" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_DEmployees_PlateState">
+          <End Type="DowntownEmployeeParkingModel.State" Role="State" Multiplicity="1" />
+          <End Type="DowntownEmployeeParkingModel.DEmployee" Role="DEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="DEmployee">
+              <PropertyRef Name="DEP_DLSTATE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="vw_DECarsOwnersInfo">
+          <Key>
+            <PropertyRef Name="DECarsID" />
+            <PropertyRef Name="EmplID" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="DEP_DLSTATE" />
+            <PropertyRef Name="MakeID" />
+            <PropertyRef Name="ModelID" />
+            <PropertyRef Name="Plate" />
+            <PropertyRef Name="PlateState" />
+          </Key>
+          <Property Name="DECarsID" Type="Int32" Nullable="false" />
+          <Property Name="EmplID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="DEP_DL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DEP_DLSTATE" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="CarName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MakeID" Type="Int32" Nullable="false" />
+          <Property Name="ModelID" Type="Int32" Nullable="false" />
+          <Property Name="Plate" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PlateState" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="Color" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="CarYear" Type="Int32" />
+          <Property Name="ToDisplay" Type="String" MaxLength="326" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="vw_DEPermitsDenormalized">
+          <Key>
+            <PropertyRef Name="DEPermits_HistoryID" />
+            <PropertyRef Name="EmplID" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="DEP_DLSTATE" />
+            <PropertyRef Name="Plate" />
+            <PropertyRef Name="PlateState" />
+            <PropertyRef Name="DEP_APPDATE" />
+            <PropertyRef Name="StatusID" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="Deleted" />
+            <PropertyRef Name="Terminated" />
+          </Key>
+          <Property Name="DEPermits_HistoryID" Type="Int32" Nullable="false" />
+          <Property Name="BUSNum" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="DEPermitNumberV" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="EmplID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="DEP_DL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DEP_DLSTATE" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="CarName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Plate" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PlateState" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="Color" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="CarYear" Type="Int32" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DEP_APPDATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DEP_RENEWDATE" Type="DateTime" Precision="0" />
+          <Property Name="StatusID" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+          <Property Name="DeletionDate" Type="DateTime" Precision="0" />
+          <Property Name="Terminated" Type="Boolean" Nullable="false" />
+          <Property Name="TerminationDate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="vw_DowntownActiveBusinessLicenses">
+          <Key>
+            <PropertyRef Name="BLgeeID" />
+            <PropertyRef Name="License_Number" />
+          </Key>
+          <Property Name="BLgeeID" Type="String" Nullable="false" MaxLength="36" FixedLength="true" Unicode="false" />
+          <Property Name="License_Number" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="License_Year" Type="Int32" />
+          <Property Name="Classification" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="License_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DBA" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Employees" Type="Double" />
+          <Property Name="DBA_Address_Line1" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="DBA_CityStateZip" Type="String" MaxLength="154" FixedLength="false" Unicode="true" />
+          <Property Name="DBATelePhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DBAEmail" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="vw_TotalCarPerBus">
+          <Key>
+            <PropertyRef Name="EmplID" />
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="BUSNum" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="TotalCarsPerBus" Type="Int32" />
+          <Property Name="TotalEmplPerBus" Type="Int32" />
+          <Property Name="EmplID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="TotalCarsPerEmpl" Type="Int32" />
+        </EntityType>
+        <EntityType Name="vw_ui_dashboard1">
+          <Key>
+            <PropertyRef Name="Sorting" />
+            <PropertyRef Name="Permits_Status" />
+          </Key>
+          <Property Name="Sorting" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Permits_Status" Type="String" Nullable="false" MaxLength="29" FixedLength="false" Unicode="true" />
+          <Property Name="Totals" Type="Int32" />
+        </EntityType>
+        <EntityType Name="vw_ui_dashboard2">
+          <Key>
+            <PropertyRef Name="Sorting" />
+            <PropertyRef Name="Errors" />
+          </Key>
+          <Property Name="Sorting" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Errors" Type="String" Nullable="false" MaxLength="27" FixedLength="false" Unicode="false" />
+          <Property Name="Value" Type="Int32" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DowntownEmployeeParkingModelStoreContainer" CdmEntityContainer="DowntownEmployeeParkingEntities">
+          <EntitySetMapping Name="Colors">
+            <EntityTypeMapping TypeName="DowntownEmployeeParkingModel.Color">
+              <MappingFragment StoreEntitySet="Color">
+                <ScalarProperty Name="Color1" ColumnName="Color" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Makes">
+            <EntityTypeMapping TypeName="DowntownEmployeeParkingModel.Make">
+              <MappingFragment StoreEntitySet="Make">
+                <ScalarProperty Name="MakeID" ColumnName="MakeID" />
+                <ScalarProperty Name="Make1" ColumnName="Make" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Models">
+            <EntityTypeMapping TypeName="DowntownEmployeeParkingModel.Model">
+              <MappingFragment StoreEntitySet="Model">
+                <ScalarProperty Name="ModelID" ColumnName="ModelID" />
+                <ScalarProperty Name="MakeID" ColumnName="MakeID" />
+                <ScalarProperty Name="Model1" ColumnName="Model" />
+                <ScalarProperty Name="CarName" ColumnName="CarName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="States">
+            <EntityTypeMapping TypeName="DowntownEmployeeParkingModel.State">
+              <MappingFragment StoreEntitySet="States">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status">
+            <EntityTypeMapping TypeName="DowntownEmployeeParkingModel.Status">
+              <MappingFragment StoreEntitySet="Status">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Status1" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="usp_DECars_inserting" FunctionName="DowntownEmployeeParkingModel.Store.usp_DECars_inserting" />
+          <FunctionImportMapping FunctionImportName="usp_DEPermits_History_insert" FunctionName="DowntownEmployeeParkingModel.Store.usp_DEPermits_History_insert" />
+          <FunctionImportMapping FunctionImportName="usp_Employee_inserting" FunctionName="DowntownEmployeeParkingModel.Store.usp_Employee_inserting" />
+          <EntitySetMapping Name="DECars">
+            <EntityTypeMapping TypeName="DowntownEmployeeParkingModel.DECar">
+              <MappingFragment StoreEntitySet="DECars">
+                <ScalarProperty Name="BUSNUM" ColumnName="BUSNUM" />
+                <ScalarProperty Name="DeletionDate" ColumnName="DeletionDate" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="TerminatedDate" ColumnName="TerminatedDate" />
+                <ScalarProperty Name="Terminated" ColumnName="Terminated" />
+                <ScalarProperty Name="sys_created_user" ColumnName="sys_created_user" />
+                <ScalarProperty Name="sys_created_date" ColumnName="sys_created_date" />
+                <ScalarProperty Name="PlateState" ColumnName="PlateState" />
+                <ScalarProperty Name="Plate" ColumnName="Plate" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="CarYear" ColumnName="CarYear" />
+                <ScalarProperty Name="CarMakeModel" ColumnName="CarMakeModel" />
+                <ScalarProperty Name="ModelID" ColumnName="ModelID" />
+                <ScalarProperty Name="MakeID" ColumnName="MakeID" />
+                <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
+                <ScalarProperty Name="DECarsID" ColumnName="DECarsID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DEPermits_History">
+            <EntityTypeMapping TypeName="DowntownEmployeeParkingModel.DEPermits_History">
+              <MappingFragment StoreEntitySet="DEPermits_History">
+                <ScalarProperty Name="EmployerPhone" ColumnName="EmployerPhone" />
+                <ScalarProperty Name="EmployerEmail" ColumnName="EmployerEmail" />
+                <ScalarProperty Name="EmployerAddress" ColumnName="EmployerAddress" />
+                <ScalarProperty Name="EmployerName" ColumnName="EmployerName" />
+                <ScalarProperty Name="sys_created_user" ColumnName="sys_created_user" />
+                <ScalarProperty Name="sys_created_date" ColumnName="sys_created_date" />
+                <ScalarProperty Name="DeletionDate" ColumnName="DeletionDate" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="TerminationDate" ColumnName="TerminationDate" />
+                <ScalarProperty Name="Terminated" ColumnName="Terminated" />
+                <ScalarProperty Name="Custom3" ColumnName="Custom3" />
+                <ScalarProperty Name="Custom2" ColumnName="Custom2" />
+                <ScalarProperty Name="Custom1" ColumnName="Custom1" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="DEP_RENEWDATE" ColumnName="DEP_RENEWDATE" />
+                <ScalarProperty Name="DEP_APPDATE" ColumnName="DEP_APPDATE" />
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+                <ScalarProperty Name="DECarID" ColumnName="DECarID" />
+                <ScalarProperty Name="EmployersContactsID" ColumnName="EmployersContactsID" />
+                <ScalarProperty Name="BUSNum" ColumnName="BUSNum" />
+                <ScalarProperty Name="EgovID" ColumnName="EgovID" />
+                <ScalarProperty Name="DEPermitNumberI" ColumnName="DEPermitNumberI" />
+                <ScalarProperty Name="DEPermitNumberV" ColumnName="DEPermitNumberV" />
+                <ScalarProperty Name="DEPermits_HistoryID" ColumnName="DEPermits_HistoryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DEmployees">
+            <EntityTypeMapping TypeName="DowntownEmployeeParkingModel.DEmployee">
+              <MappingFragment StoreEntitySet="DEmployees">
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="deleted" ColumnName="deleted" />
+                <ScalarProperty Name="BUSNum" ColumnName="BUSNum" />
+                <ScalarProperty Name="sys_created_user" ColumnName="sys_created_user" />
+                <ScalarProperty Name="sys_created_date" ColumnName="sys_created_date" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="DEP_DLSTATE" ColumnName="DEP_DLSTATE" />
+                <ScalarProperty Name="DEP_DL" ColumnName="DEP_DL" />
+                <ScalarProperty Name="EmplZipCode" ColumnName="EmplZipCode" />
+                <ScalarProperty Name="EmplCity" ColumnName="EmplCity" />
+                <ScalarProperty Name="EmplState" ColumnName="EmplState" />
+                <ScalarProperty Name="EmplAddress" ColumnName="EmplAddress" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="EmplID" ColumnName="EmplID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_DECarsOwnersInfo">
+            <EntityTypeMapping TypeName="DowntownEmployeeParkingModel.vw_DECarsOwnersInfo">
+              <MappingFragment StoreEntitySet="vw_DECarsOwnersInfo">
+                <ScalarProperty Name="ToDisplay" ColumnName="ToDisplay" />
+                <ScalarProperty Name="CarYear" ColumnName="CarYear" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="PlateState" ColumnName="PlateState" />
+                <ScalarProperty Name="Plate" ColumnName="Plate" />
+                <ScalarProperty Name="ModelID" ColumnName="ModelID" />
+                <ScalarProperty Name="MakeID" ColumnName="MakeID" />
+                <ScalarProperty Name="CarName" ColumnName="CarName" />
+                <ScalarProperty Name="DEP_DLSTATE" ColumnName="DEP_DLSTATE" />
+                <ScalarProperty Name="DEP_DL" ColumnName="DEP_DL" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="EmplID" ColumnName="EmplID" />
+                <ScalarProperty Name="DECarsID" ColumnName="DECarsID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_DEPermitsDenormalized">
+            <EntityTypeMapping TypeName="DowntownEmployeeParkingModel.vw_DEPermitsDenormalized">
+              <MappingFragment StoreEntitySet="vw_DEPermitsDenormalized">
+                <ScalarProperty Name="TerminationDate" ColumnName="TerminationDate" />
+                <ScalarProperty Name="Terminated" ColumnName="Terminated" />
+                <ScalarProperty Name="DeletionDate" ColumnName="DeletionDate" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+                <ScalarProperty Name="DEP_RENEWDATE" ColumnName="DEP_RENEWDATE" />
+                <ScalarProperty Name="DEP_APPDATE" ColumnName="DEP_APPDATE" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="CarYear" ColumnName="CarYear" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="PlateState" ColumnName="PlateState" />
+                <ScalarProperty Name="Plate" ColumnName="Plate" />
+                <ScalarProperty Name="CarName" ColumnName="CarName" />
+                <ScalarProperty Name="DEP_DLSTATE" ColumnName="DEP_DLSTATE" />
+                <ScalarProperty Name="DEP_DL" ColumnName="DEP_DL" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="EmplID" ColumnName="EmplID" />
+                <ScalarProperty Name="DEPermitNumberV" ColumnName="DEPermitNumberV" />
+                <ScalarProperty Name="BUSNum" ColumnName="BUSNum" />
+                <ScalarProperty Name="DEPermits_HistoryID" ColumnName="DEPermits_HistoryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_DowntownActiveBusinessLicenses">
+            <EntityTypeMapping TypeName="DowntownEmployeeParkingModel.vw_DowntownActiveBusinessLicenses">
+              <MappingFragment StoreEntitySet="vw_DowntownActiveBusinessLicenses">
+                <ScalarProperty Name="DBAEmail" ColumnName="DBAEmail" />
+                <ScalarProperty Name="DBATelePhone" ColumnName="DBATelePhone" />
+                <ScalarProperty Name="DBA_CityStateZip" ColumnName="DBA_CityStateZip" />
+                <ScalarProperty Name="DBA_Address_Line1" ColumnName="DBA_Address_Line1" />
+                <ScalarProperty Name="Employees" ColumnName="Employees" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="DBA" ColumnName="DBA" />
+                <ScalarProperty Name="License_Status" ColumnName="License_Status" />
+                <ScalarProperty Name="Classification" ColumnName="Classification" />
+                <ScalarProperty Name="License_Year" ColumnName="License_Year" />
+                <ScalarProperty Name="License_Number" ColumnName="License_Number" />
+                <ScalarProperty Name="BLgeeID" ColumnName="BLgeeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_TotalCarPerBus">
+            <EntityTypeMapping TypeName="DowntownEmployeeParkingModel.vw_TotalCarPerBus">
+              <MappingFragment StoreEntitySet="vw_TotalCarPerBus">
+                <ScalarProperty Name="TotalCarsPerEmpl" ColumnName="TotalCarsPerEmpl" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="EmplID" ColumnName="EmplID" />
+                <ScalarProperty Name="TotalEmplPerBus" ColumnName="TotalEmplPerBus" />
+                <ScalarProperty Name="TotalCarsPerBus" ColumnName="TotalCarsPerBus" />
+                <ScalarProperty Name="BUSNum" ColumnName="BUSNum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_ui_dashboard1">
+            <EntityTypeMapping TypeName="DowntownEmployeeParkingModel.vw_ui_dashboard1">
+              <MappingFragment StoreEntitySet="vw_ui_dashboard1">
+                <ScalarProperty Name="Totals" ColumnName="Totals" />
+                <ScalarProperty Name="Permits_Status" ColumnName="Permits Status" />
+                <ScalarProperty Name="Sorting" ColumnName="Sorting" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_ui_dashboard2">
+            <EntityTypeMapping TypeName="DowntownEmployeeParkingModel.vw_ui_dashboard2">
+              <MappingFragment StoreEntitySet="vw_ui_dashboard2">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Errors" ColumnName="Errors" />
+                <ScalarProperty Name="Sorting" ColumnName="Sorting" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

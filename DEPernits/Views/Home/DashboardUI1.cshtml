@@ -1,0 +1,37 @@
+﻿@model IEnumerable<DEPernits.vw_ui_dashboard1>
+
+    @{
+        ViewBag.Title = "DashboardUI1";
+    }
+
+
+<div class="panel panel-primary">
+    <table id="uiTbl1" class="table table-responsive table-bordered">
+        <tr class="bg-primary" >
+            @*<th>
+                @Html.DisplayNameFor(model => model.Sorting)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Permits_Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Totals)
+            </th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Sorting)
+                    </td>*@
+                <td id="stat">
+                    @Html.DisplayFor(modelItem => item.Permits_Status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Totals)
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

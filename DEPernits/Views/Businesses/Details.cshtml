@@ -1,0 +1,99 @@
+﻿@model DEPernits.vw_DowntownActiveBusinessLicenses
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>vw_DowntownActiveBusinessLicenses</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.BLgeeID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BLgeeID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.License_Number)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.License_Number)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.License_Year)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.License_Year)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Classification)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Classification)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.License_Status)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.License_Status)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DBA)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DBA)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Description)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Employees)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Employees)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DBA_Address_Line1)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DBA_Address_Line1)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DBA_CityStateZip)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DBA_CityStateZip)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DBATelePhone)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DBATelePhone)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DBAEmail)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DBAEmail)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,163 @@
+﻿@model DEPernits.DEPermits_History
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Permit Details</h2>
+
+<fieldset class="form-horizontal">
+    <legend>Permit Info</legend>
+
+    <dl class="dl-horizontal">
+        <dt class="display-label">
+            @Html.DisplayNameFor(model => model.DEPermits_HistoryID)
+        </dt>
+
+        <dd class="display-field">
+            @Html.DisplayFor(model => model.DEPermits_HistoryID)
+        </dd>
+
+        <dt class="display-label">
+            @Html.DisplayNameFor(model => model.EgovID)
+        </dt>
+        <dd class="display-field">
+            @Html.DisplayFor(model => model.EgovID)
+        </dd>
+
+        <dt class="display-label">
+            @Html.DisplayNameFor(model => model.DEPermitNumberI)
+        </dt>
+        <dd class="display-field">
+            @Html.DisplayFor(model => model.DEPermitNumberI)
+        </dd>
+
+
+        <dt class="display-label">
+            @Html.DisplayNameFor(model => model.DEPermitNumberV)
+        </dt>
+        <dd class="display-field">
+            @Html.DisplayFor(model => model.DEPermitNumberV)
+        </dd>
+
+
+        <dt class="display-label">
+            @Html.DisplayNameFor(model => model.BUSNum)
+        </dt>
+        <dd class="display-field">
+            @Html.DisplayFor(model => model.BUSNum)
+        </dd>
+
+        <dt class="display-label">
+            @Html.DisplayNameFor(model => model.DECar.CarMakeModel)
+        </dt>
+        <dd class="display-field">
+            @Html.DisplayFor(model => model.DECar.CarMakeModel)
+        </dd>
+
+        <dt class="display-label">
+            @Html.DisplayNameFor(model => model.Status.Status1)
+        </dt>
+        <dd class="display-field">
+            @Html.DisplayFor(model => model.Status.Status1)
+        </dd>
+
+        <dt class="display-label">
+            @Html.DisplayNameFor(model => model.DEP_APPDATE)
+        </dt>
+        <dd class="display-field">
+            @Html.DisplayFor(model => model.DEP_APPDATE)
+        </dd>
+
+        <dt class="display-label">
+            @Html.DisplayNameFor(model => model.DEP_RENEWDATE)
+        </dt>
+        <dd class="display-field">
+            @Html.DisplayFor(model => model.DEP_RENEWDATE)
+        </dd>
+
+        <dt class="display-label">
+            @Html.DisplayNameFor(model => model.Notes)
+        </dt>
+        <dd class="display-field">
+            @Html.DisplayFor(model => model.Notes)
+        </dd>
+
+        <dt class="display-label">
+            @Html.DisplayNameFor(model => model.Custom1)
+        </dt>
+        <dd class="display-field">
+            @Html.DisplayFor(model => model.Custom1)
+        </dd>
+
+        <dt class="display-label">
+            @Html.DisplayNameFor(model => model.Custom2)
+        </dt>
+        <dd class="display-field">
+            @Html.DisplayFor(model => model.Custom2)
+        </dd>
+
+        <dt class="display-label">
+            @Html.DisplayNameFor(model => model.Custom3)
+        </dt>
+        <dd class="display-field">
+            @Html.DisplayFor(model => model.Custom3)
+        </dd>
+
+
+        <dt class="display-label">
+            @Html.DisplayNameFor(model => model.EmployerName)
+        </dt>
+        <dd class="display-field">
+            @Html.DisplayFor(model => model.EmployerName)
+        </dd>
+
+        <dt class="display-label">
+            @Html.DisplayNameFor(model => model.EmployerAddress)
+        </dt>
+        <dd class="display-field">
+            @Html.DisplayFor(model => model.EmployerAddress)
+        </dd>
+
+        <dt class="display-label">
+            @Html.DisplayNameFor(model => model.EmployerEmail)
+        </dt>
+        <dd class="display-field">
+            @Html.DisplayFor(model => model.EmployerEmail)
+        </dd>
+
+        <dt class="display-label">
+            @Html.DisplayNameFor(model => model.EmployerPhone)
+        </dt>
+        <dd class="display-field">
+            @Html.DisplayFor(model => model.EmployerPhone)
+        </dd>
+
+        <dt class="display-label">
+            @Html.DisplayNameFor(model => model.Terminated)
+        </dt>
+        <dd class="display-field">
+            @Html.DisplayFor(model => model.Terminated)
+        </dd>
+
+        <dt class="display-label">
+            @Html.DisplayNameFor(model => model.TerminationDate)
+        </dt>
+        <dd class="display-field">
+            @Html.DisplayFor(model => model.TerminationDate)
+        </dd>
+
+        <dt class="display-label">
+            @Html.DisplayNameFor(model => model.Deleted)
+        </dt>
+        <dd class="display-field">
+            @Html.DisplayFor(model => model.Deleted)
+        </dd>
+
+    </dl>
+
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.DEPermits_HistoryID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

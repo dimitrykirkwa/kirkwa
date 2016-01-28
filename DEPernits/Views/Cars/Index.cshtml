@@ -1,0 +1,141 @@
+﻿@model IEnumerable<DEPernits.DECar>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Registered Vehicle</h2>
+
+<p>
+    @* class="btn-success btn btn-primary  btn-large active"> *@
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success  btn-large" })
+</p>
+<table id="zTable" class="display compact">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DECarsID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Make.Make1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Model.Model1)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.CarMakeModel)
+                </th>*@
+            @*<th>
+                @Html.DisplayNameFor(model => model.CarYear)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Color1.Color1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Plate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlateState)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DEmployee.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DEmployee.BUSNum)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DECarsID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Make.Make1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Model.Model1)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.CarMakeModel)
+                    </td>*@
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.CarYear)
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Color1.Color1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Plate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PlateState)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DEmployee.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DEmployee.BUSNum)
+                </td>
+                <td>
+                    <div class="text-nowrap">
+                        @*@Html.ActionLink("Edit", "Edit", new { id = item.DECarsID }) |*@
+                        @*@Html.ActionLink("Details", "Details", new { id = item.DECarsID }) |*@
+                        @*@Html.ActionLink("Delete", "Delete", new { id = item.DECarsID }, new { @class = "btn btn-success  btn-large" })*@
+
+
+                        <a href="@Url.Action("Edit", new { id = item.DECarsID })" class="btn btn-primary btn-sm">
+                            <i class="glyphicon glyphicon-edit"></i>
+                            <span class="sr-only">Edit</span>
+                        </a>
+
+
+                        
+                        <a href="@Url.Action("Details", new { id = item.DECarsID })" class="btn btn-info btn-sm">
+                            <i class="glyphicon glyphicon-search"></i>
+                            <span class="sr-only">Details</span>
+                        </a>
+
+                        
+                        <a href="@Url.Action("Delete", new { id = item.DECarsID })" class="btn btn-danger btn-sm">
+                            <i class="glyphicon glyphicon-trash"></i>
+                            <span class="sr-only">Delete</span>
+                        </a>
+                        @*<a href="#" class="btn btn-danger btn-mini"><i class="icon-white icon-trash"></i></a>*@
+                    </div>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+
+</table>
+
+
+@section Scripts {
+    @Styles.Render("~/Content/datatblcss")
+    @Scripts.Render("~/bundles/jquery")
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('table[id*=zTable]').dataTable({ //#ContentPlaceHolder1_GridView1
+
+                "iDisplayLength": 25,
+                "order": [[0, "asc"]]
+
+            });
+
+        });
+
+    </script>
+
+}
+
+
+

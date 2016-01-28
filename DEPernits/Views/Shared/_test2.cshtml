@@ -1,0 +1,33 @@
+﻿@model IEnumerable<DEPernits.vw_ui_dashboard1>
+
+
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Sorting)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Permits_Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Totals)
+        </th>
+
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sorting)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Permits_Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Totals)
+        </td>
+
+    </tr>
+}
+
+</table>

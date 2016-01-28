@@ -1,0 +1,143 @@
+﻿@model DEPernits.DECar
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit Vehicle</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset class="form-horizontal">
+        <legend>Vehicle Info</legend>
+
+        @*<div class="editor-label">
+                @Html.LabelFor(model => model.DECarsID)
+            </div>*@
+        @Html.HiddenFor(model => model.DECarsID)
+
+        @*<div class="editor-field">
+                @Html.EditorFor(model => model.DECarsID)
+                @Html.ValidationMessageFor(model => model.DECarsID)
+            </div>*@
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OwnerId, "Employee", new { @class = "col-sm-3 control-label" })
+            <div class="editor-field col-sm-8">
+                @Html.DropDownList("OwnerId", String.Empty)
+                @Html.ValidationMessageFor(model => model.OwnerId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MakeID, "Make", new { @class = "col-sm-3 control-label" })
+            <div class="editor-field col-sm-8">
+                @Html.DropDownList("MakeID", String.Empty)
+                @Html.ValidationMessageFor(model => model.MakeID)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ModelID, "Model", new { @class = "col-sm-3 control-label" })
+            <div class="editor-field col-sm-8">
+                @Html.DropDownList("ModelID", String.Empty)
+                @Html.ValidationMessageFor(model => model.ModelID)
+            </div>
+        </div>
+
+        @*<div class="editor-label">
+                @Html.LabelFor(model => model.CarMakeModel)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.CarMakeModel)
+                @Html.ValidationMessageFor(model => model.CarMakeModel)
+            </div>*@
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.CarYear, new { @class = "col-sm-3 control-label" })
+            <div class="editor-field col-sm-8">
+                @Html.EditorFor(model => model.CarYear)
+                @Html.ValidationMessageFor(model => model.CarYear)
+            </div>
+        </div>*@
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Color, "Color", new { @class = "col-sm-3 control-label" })
+            <div class="editor-field col-sm-8">
+                @Html.DropDownList("Color", String.Empty)
+                @Html.ValidationMessageFor(model => model.Color)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Plate, new { @class = "col-sm-3 control-label" })
+            <div class="editor-field col-sm-8">
+                @Html.EditorFor(model => model.Plate)
+                @Html.ValidationMessageFor(model => model.Plate)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PlateState, "State", new { @class = "col-sm-3 control-label" })
+            <div class="editor-field col-sm-8">
+                @Html.DropDownList("PlateState", String.Empty)
+                @Html.ValidationMessageFor(model => model.PlateState)
+            </div>
+        </div>
+
+        <p>
+            <input type="submit" value="Save" class=" btn btn-primary btn-sm" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @*@Scripts.Render("~/bundles/jqueryval")*@
+    @Scripts.Render("~/bundles/jquery")
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            if ($("#MakeID > option:selected").attr("value")) {
+                //alert("something");
+
+                $.getJSON("/Cars/Model/list/" + $("#MakeID > option:selected").attr("value"), function (data) {
+                    var items = "<option>Select Model</option>";
+                    $.each(data, function (i, modeln) {
+                        items += "<option value='" + modeln.Value + "'>" + modeln.Text + "</option>";
+                    });
+                    $("#ModelID").html(items);
+                });
+
+            }
+        });
+
+        $(function () {
+            //$.getJSON("/Cars/Make/list", function (data) {
+            //    var items = "<option>Select Make</option>";
+            //    $.each(data, function (i, make) {
+            //        items += "<option value='" + make.Value + "'>" + make.Text + "</option>";
+            //    });
+            //    $("#MakeID").html(items);
+            //});
+
+            $("#MakeID").change(function () {
+                //alert($("#MakeID > option:selected").attr("value"));
+                $.getJSON("/Cars/Model/list/" + $("#MakeID > option:selected").attr("value"), function (data) {
+                    var items = "<option>Select Model</option>";
+                    $.each(data, function (i, modeln) {
+                        items += "<option value='" + modeln.Value + "'>" + modeln.Text + "</option>";
+                    });
+                    $("#ModelID").html(items);
+                });
+            });
+        });
+    </script>
+}

@@ -1,0 +1,86 @@
+﻿@model DEPernits.DECar
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>DECar</legend>
+
+    <dl class="dl-horizontal">
+        <dt class="display-label">
+            @Html.DisplayNameFor(model => model.DECarsID)
+        </dt>
+        <dd class="display-field">
+            @Html.DisplayFor(model => model.DECarsID)
+        </dd>
+
+        <dt class="display-label">
+            @Html.DisplayNameFor(model => model.DEmployee.Name)
+        </dt>
+        <dd class="display-field">
+            @Html.DisplayFor(model => model.DEmployee.Name)
+        </dd>
+
+        <dt class="display-label">
+            @Html.DisplayNameFor(model => model.Make.Make1)
+        </dt>
+        <dd class="display-field">
+            @Html.DisplayFor(model => model.Make.Make1)
+        </dd>
+
+        <dt class="display-label">
+            @Html.DisplayNameFor(model => model.Model.Model1)
+        </dt>
+        <dd class="display-field">
+            @Html.DisplayFor(model => model.Model.Model1)
+        </dd>
+
+        <dt class="display-label">
+            @Html.DisplayNameFor(model => model.CarMakeModel)
+        </dt>
+        <dd class="display-field">
+            @Html.DisplayFor(model => model.CarMakeModel)
+        </dd>
+
+        <dt class="display-label">
+            @Html.DisplayNameFor(model => model.CarYear)
+        </dt>
+        <dd class="display-field">
+            @Html.DisplayFor(model => model.CarYear)
+        </dd>
+
+        <dt class="display-label">
+            @Html.DisplayNameFor(model => model.Color1.Color1)
+        </dt>
+        <dd class="display-field">
+            @Html.DisplayFor(model => model.Color1.Color1)
+        </dd>
+
+        <dt class="display-label">
+            @Html.DisplayNameFor(model => model.Plate)
+        </dt>
+        <dd class="display-field">
+            @Html.DisplayFor(model => model.Plate)
+        </dd>
+
+        <dt class="display-label">
+            @Html.DisplayNameFor(model => model.State.Name)
+        </dt>
+        <dd class="display-field">
+            @Html.DisplayFor(model => model.State.Name)
+        </dd>
+    </dl>
+
+</fieldset>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

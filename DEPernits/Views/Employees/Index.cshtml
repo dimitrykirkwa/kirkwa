@@ -1,0 +1,139 @@
+﻿@model IEnumerable<DEPernits.DEmployee>
+
+@{
+    ViewBag.Title = "Registered Employees";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success  btn-large" })
+</p>
+@*<div class="table-responsive">*@
+    <table id="zTable" class="display compact">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmplID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    <div class="col-lg-5 col-md-5">@Html.DisplayNameFor(model => model.EmplAddress)</div>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmplState)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmplZipCode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DEP_DL)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DEP_DLSTATE)
+                </th>
+                @*<th>
+                    @Html.DisplayNameFor(model => model.email)
+                </th>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.phone)
+                </th>
+
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmplID)
+                    </td>
+                    <td>
+                        <div class="text-nowrap">@Html.DisplayFor(modelItem => item.Name)</div>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmplAddress)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmplState)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmplZipCode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DEP_DL)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DEP_DLSTATE)
+                    </td>
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.email)
+                    </td>*@
+                    <td>
+                        <div class="text-nowrap">@Html.DisplayFor(modelItem => item.phone)</div>
+                    </td>
+
+                    <td>
+                        <div class="text-nowrap">
+                            @*@Html.ActionLink("Edit", "Edit", new { id = item.EmplID }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.EmplID }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.EmplID })*@
+
+
+                            <a href="@Url.Action("Edit", new { id = item.EmplID })" class="btn btn-primary btn-sm" title="Edit">
+                                <i class="glyphicon glyphicon-edit"></i>
+                                <span class="sr-only">Edit</span>
+                            </a>
+
+
+                            <a href="@Url.Action("Details", new { id = item.EmplID })" class="btn btn-info btn-sm" title="Details">
+                                <i class="glyphicon glyphicon-search"></i>
+                                <span class="sr-only">Details</span>
+                            </a>
+
+
+                            <a href="@Url.Action("Delete", new { id = item.EmplID })" class="btn btn-danger btn-sm" title="Delete">
+                                <i class="glyphicon glyphicon-trash"></i>
+                                <span class="sr-only">Delete</span>
+                            </a>
+
+                        </div>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+
+
+
+
+@*</div>*@
+
+
+@section Scripts {
+    @Styles.Render("~/Content/datatblcss")
+    @Scripts.Render("~/bundles/jquery")
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('table[id*=zTable]').dataTable({ //#ContentPlaceHolder1_GridView1
+
+                "iDisplayLength": 25,
+                "order": [[3, "asc"]]
+
+            });
+
+        });
+
+    </script>
+
+}
+

@@ -1,0 +1,64 @@
+﻿@{
+    ViewBag.Title = "Dashboard";
+}
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title</h1>
+                @*<h2>@ViewBag.Message</h2>*@
+            </hgroup>
+            <p>
+                Statistics about Downtown Employee Parking Permits
+            </p>
+        </div>
+    </section>
+}
+<br /><br /><br />
+
+<div class="col-lg-5 col-md-5">
+        @Html.Partial("DashboardUI1")
+
+</div>
+
+
+
+<div class="col-lg-3 col-md-3">
+    @*@(Html.RenderAction("DashboardUI1", "Home");)*@
+
+</div>
+
+
+@section Scripts {
+    @Styles.Render("~/Content/datatblcss")
+    @Scripts.Render("~/bundles/jquery")
+
+
+    <script type="text/javascript">
+        
+        $(document).ready(function () {
+            $('#uiTbl1 td').each(function () {
+                
+                if ($(this).text().trim() == "Active") {
+                    $(this).parent().addClass("info"); //addcss('color', 'red');
+                } else if ($(this).text().trim() == "Renewal") {
+                    $(this).parent().addClass("warning");
+                }
+                else if ($(this).text().trim() == "Expired") {
+                    $(this).parent().addClass("danger");
+                }
+                //if ($(this).text() == 'Active') {
+                //    $(this).closest('tr').addClass("info"); //addcss('color', 'red');
+                //}
+            });
+        });
+
+
+
+        //$(document).ready(function () {
+        //    $('table[id*=stat].val():contains("Active")').closest('tr').addClass("info"); //.css('background-color', '#cd0000');
+        //});
+
+    </script>
+
+}

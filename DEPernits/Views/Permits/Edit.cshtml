@@ -1,0 +1,205 @@
+﻿@model DEPernits.DEPermits_History
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit Permit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset class="form-horizontal">
+        <legend>Permit Info</legend>
+
+        @*<div class="editor-label form-group">*@
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.DEPermits_History1, new { @class = "col-sm-3 control-label" })*@
+            @*</div>*@
+            @*<div class="editor-field form-control">*@
+
+            @*@Html.EditorFor(model => model.DEPermits_HistoryID, new { @class = "form-control" })*@
+            @*@Html.ValidationMessageFor(model => model.DEPermits_HistoryID)*@
+
+        @*</div>
+            </div>*@
+
+        @Html.HiddenFor(model => model.DEPermits_HistoryID)
+   
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.BUSNum, new { @class = "col-sm-3 control-label" })
+            <div class="editor-field col-sm-8">
+                @Html.TextBoxFor(x => x.BUSNum, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.BUSNum)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DEPermitNumberV, new { @class = "col-sm-3 control-label" })
+            <div class="editor-field col-sm-8">
+                @Html.TextBoxFor(x => x.DEPermitNumberV, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.DEPermitNumberV)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DECarID, "Vehicle", new { @class = "col-sm-3 control-label" })
+            <div class="editor-field col-sm-8">
+                @Html.DropDownListFor(x => x.DECarID, (IEnumerable<SelectListItem>)ViewBag.DECarID, new { @class = "form-control" })
+                @*@Html.DropDownList("DECarID", String.Empty)*@
+                @Html.ValidationMessageFor(model => model.DECarID)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.StatusID, "Permit Status", new { @class = "col-sm-3 control-label" })
+            <div class="editor-field col-sm-8">
+                @Html.DropDownListFor(x => x.StatusID, (IEnumerable<SelectListItem>)ViewBag.StatusID, new { @class = "form-control" })
+                @*@Html.DropDownList("StatusID", String.Empty)*@
+                @Html.ValidationMessageFor(model => model.StatusID)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DEP_APPDATE, new { @class = "col-sm-3 control-label" })
+            <div id="dtpk1" class="editor-field col-sm-8">
+                @Html.TextBoxFor(model => model.DEP_APPDATE, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.DEP_APPDATE)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DEP_RENEWDATE, new { @class = "col-sm-3 control-label" })
+            <div class="editor-field col-sm-8">
+                @Html.TextBoxFor(model => model.DEP_RENEWDATE, new { @class = "form-control datepkr" })
+                @Html.ValidationMessageFor(model => model.DEP_RENEWDATE)
+            </div>
+        </div>
+
+        <div class="editor-label form-group">
+            @Html.LabelFor(model => model.Notes, new { @class = "col-sm-3 control-label" })
+            <div class="editor-field col-sm-8">
+                @Html.TextAreaFor(model => model.Notes, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Notes)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EmployerName, new { @class = "col-sm-3 control-label" })
+
+            <div class="editor-field col-sm-8">
+                @Html.TextBoxFor(model => model.EmployerName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.EmployerName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EmployerAddress, new { @class = "col-sm-3 control-label" })
+
+            <div class="editor-field col-sm-8">
+                @Html.TextBoxFor(model => model.EmployerAddress, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.EmployerAddress)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EmployerEmail, new { @class = "col-sm-3 control-label" })
+
+            <div class="editor-field col-sm-8">
+                @Html.TextBoxFor(model => model.EmployerEmail, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.EmployerEmail)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EmployerPhone, new { @class = "col-sm-3 control-label" })
+
+            <div class="editor-field col-sm-8">
+                @Html.TextBoxFor(model => model.EmployerPhone, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.EmployerPhone)
+            </div>
+        </div>
+
+
+
+        @*<div class="editor-label form-group">
+            @Html.LabelFor(model => model.Custom1, new { @class = "col-sm-3 control-label" })
+            <div class="col-sm-10">
+                @Html.EditorFor(model => model.Custom1, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Custom1)
+            </div>
+        </div>
+
+        <div class="editor-label form-group">
+            @Html.LabelFor(model => model.Custom2, new { @class = "col-sm-3 control-label" })
+            <div class="col-sm-10">
+                @Html.EditorFor(model => model.Custom2, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Custom2)
+            </div>
+        </div>
+
+        <div class="editor-label form-group">
+            @Html.LabelFor(model => model.Custom3, new { @class = "col-sm-3 control-label" })
+            <div class="col-sm-10">
+                @Html.EditorFor(model => model.Custom3, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Custom3)
+            </div>
+        </div>*@
+
+        <div class="editor-label form-group">
+            @Html.LabelFor(model => model.Terminated, new { @class = "col-sm-3 control-label" })
+            <div class="editor-field col-sm-8">
+                @Html.EditorFor(model => model.Terminated, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Terminated)
+            </div>
+        </div>
+
+        <div class="editor-label form-group">
+            @Html.LabelFor(model => model.TerminationDate, new { @class = "col-sm-3 control-label" })
+            <div class="editor-field col-sm-8">
+                @Html.TextBoxFor(model => model.TerminationDate, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.TerminationDate)
+            </div>
+        </div>
+
+        <div class="editor-label form-group">
+            @Html.LabelFor(model => model.Deleted, new { @class = "col-sm-3 control-label" })
+            <div class="editor-field col-sm-8">
+                @Html.EditorFor(model => model.Deleted, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Deleted)
+            </div>
+        </div>
+
+        <p>
+            <input type="submit" value="Save" class=" btn btn-primary btn-sm" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $("#DEP_APPDATE").datepicker().addClass("form-control");
+            $("#DEP_RENEWDATE").datepicker().addClass("form-control");
+            $("#TerminationDate").datepicker();
+
+        });
+
+
+    </script>
+
+
+}
